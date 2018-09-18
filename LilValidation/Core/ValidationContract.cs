@@ -127,18 +127,9 @@ namespace LilValidation.Core
         /// <param name="description">A description of Error to be added.</param>
         public void AddNotification(string errorCode, string description)
         {
-            AddNotification(new ValidationError(errorCode, description));
+            _errors.Add(new ValidationError(errorCode, description));
         }
-
-        /// <summary>
-        /// Add a Error to contract list
-        /// </summary>
-        /// <param name="error">Existing error to be added.</param>
-        public void AddNotification(ValidationError error)
-        {
-            _errors.Add(error);
-        }
-
+        
         /// <summary>
         /// Build Validation structure
         /// </summary>
