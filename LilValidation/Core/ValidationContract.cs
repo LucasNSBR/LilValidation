@@ -93,7 +93,7 @@ namespace LilValidation.Core
         /// <param name="memberName">Name of the member coming from a existent contract</param>
         /// <param name="memberValue">Value of the member coming from a existent contract</param>
         /// <param name="errors">Notifications to be passed to this contract, coming from a existent contract</param>
-        /// <param name="options">Options of this Contract. This value should come from previous existent contract.</param>
+        /// <param name="options">Options of this Contract. This value should come from previous existent contract. If null, Validator will use default configurations</param>
         public ValidationContract(string memberName, TProperty memberValue, IReadOnlyList<ValidationError> errors = null, IValidatorOptions options = null)
         {
             _errors = errors?.ToList() ?? new List<ValidationError>();
@@ -108,13 +108,17 @@ namespace LilValidation.Core
         /// Configure Validator Options
         /// </summary>
         /// <param name="options">The options to configure object</param>
-        /// <returns></returns>
+        /// <returns>Validation Contract with default validator options</returns>
         public ValidationContract<T, TProperty> AddValidatorOptions(IValidatorOptions options)
         {
             Options = options; 
             return this;
         }
 
+        /// <summary>
+        /// Get default options for this validator
+        /// </summary>
+        /// <returns>Default ValidatorOptions</returns>
         private IValidatorOptions GetDefaultOptions()
         {
             return new ValidatorOptions();
