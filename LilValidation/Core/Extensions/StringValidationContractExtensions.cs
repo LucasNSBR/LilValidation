@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace LilValidation.Core.Extensions
+namespace LilValidation.Core
 {
     public static class StringContractExtensions
     {

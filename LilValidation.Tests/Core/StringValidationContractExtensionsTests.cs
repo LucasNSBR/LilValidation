@@ -1,5 +1,4 @@
 ﻿using LilValidation.Core;
-using LilValidation.Core.Extensions;
 using LilValidation.Sample.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;

@@ -1,4 +1,4 @@
-﻿namespace LilValidation.Core.Extensions
+﻿namespace LilValidation.Core
 {
     public static class ObjectValidationContractExtensions
     {

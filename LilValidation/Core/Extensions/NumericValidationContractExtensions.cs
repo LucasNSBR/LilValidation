@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LilValidation.Core.Extensions
+namespace LilValidation.Core
 {
     public static class NumericValidationContractExtensions
     {
