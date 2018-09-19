@@ -16,7 +16,7 @@
             errorDescription = errorDescription ?? string.Format(contract.Options.Messages.IsTrueErrorMessage.Value, contract.MemberName);
 
             if (!contract.MemberValue)
-                contract.AddNotification(errorCode, errorDescription);
+                contract.AddError(errorCode, errorDescription);
 
             return new ValidationContract<T, bool>(contract.MemberName, contract.MemberValue, contract.Errors);
         }
@@ -35,7 +35,7 @@
             errorDescription = errorDescription ?? string.Format(contract.Options.Messages.IsFalseErrorMessage.Value, contract.MemberName);
 
             if (contract.MemberValue)
-                contract.AddNotification(errorCode, errorDescription);
+                contract.AddError(errorCode, errorDescription);
 
             return new ValidationContract<T, bool>(contract.MemberName, contract.MemberValue, contract.Errors);
         }

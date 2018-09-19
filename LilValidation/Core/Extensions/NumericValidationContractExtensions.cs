@@ -20,7 +20,7 @@ namespace LilValidation.Core.Extensions
             errorDescription = errorDescription ?? string.Format(contract.Options.Messages.EqualsErrorMessage.Value, contract.MemberName, value);
 
             if (contract.MemberValue.CompareTo(value) != 0)
-                contract.AddNotification(errorCode, errorDescription);
+                contract.AddError(errorCode, errorDescription);
 
             return new ValidationContract<T, TProperty>(contract.MemberName, contract.MemberValue, contract.Errors);
         }
@@ -42,7 +42,7 @@ namespace LilValidation.Core.Extensions
             errorDescription = errorDescription ?? string.Format(contract.Options.Messages.BetweenErrorMessage.Value, contract.MemberName, initial, final);
 
             if (contract.MemberValue.CompareTo(initial) < 0 || contract.MemberValue.CompareTo(final) > 0)
-                contract.AddNotification(errorCode, errorDescription);
+                contract.AddError(errorCode, errorDescription);
 
             return new ValidationContract<T, TProperty>(contract.MemberName, contract.MemberValue, contract.Errors);
         }
@@ -63,7 +63,7 @@ namespace LilValidation.Core.Extensions
             errorDescription = errorDescription ?? string.Format(contract.Options.Messages.LessOrEqualThanErrorMessage.Value, contract.MemberName, value);
 
             if (contract.MemberValue.CompareTo(value) > 0)
-                contract.AddNotification(errorCode, errorDescription);
+                contract.AddError(errorCode, errorDescription);
 
             return new ValidationContract<T, TProperty>(contract.MemberName, contract.MemberValue, contract.Errors);
         }
@@ -84,7 +84,7 @@ namespace LilValidation.Core.Extensions
             errorDescription = errorDescription ?? string.Format(contract.Options.Messages.GreaterOrEqualThanErrorMessage.Value, contract.MemberName, value);
 
             if (contract.MemberValue.CompareTo(value) < 0)
-                contract.AddNotification(errorCode, errorDescription);
+                contract.AddError(errorCode, errorDescription);
 
             return new ValidationContract<T, TProperty>(contract.MemberName, contract.MemberValue, contract.Errors);
         }
@@ -105,7 +105,7 @@ namespace LilValidation.Core.Extensions
             errorDescription = errorDescription ?? string.Format(contract.Options.Messages.LessThanErrorMessage.Value, contract.MemberName, value);
 
             if (contract.MemberValue.CompareTo(value) >= 0)
-                contract.AddNotification(errorCode, errorDescription);
+                contract.AddError(errorCode, errorDescription);
 
             return new ValidationContract<T, TProperty>(contract.MemberName, contract.MemberValue, contract.Errors);
         }
@@ -126,7 +126,7 @@ namespace LilValidation.Core.Extensions
             errorDescription = errorDescription ?? string.Format(contract.Options.Messages.GreaterThanErrorMessage.Value, contract.MemberName, value);
 
             if (contract.MemberValue.CompareTo(value) <= 0)
-                contract.AddNotification(errorCode, errorDescription);
+                contract.AddError(errorCode, errorDescription);
 
             return new ValidationContract<T, TProperty>(contract.MemberName, contract.MemberValue, contract.Errors);
         }

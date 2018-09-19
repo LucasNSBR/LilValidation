@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace LilValidation.Core
 {
-    public class ValidationContract<T, TProperty> 
+    public class ValidationContract<T, TProperty>
     {
         /// <summary>
         /// Name of the property that are being validated.
@@ -130,7 +130,7 @@ namespace LilValidation.Core
         /// </summary>
         /// <param name="errorCode">A title of Error to be added.</param>
         /// <param name="description">A description of Error to be added.</param>
-        public void AddNotification(string errorCode, string description)
+        public void AddError(string errorCode, string description)
         {
             _errors.Add(new ValidationError(errorCode, description));
         }

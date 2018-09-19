@@ -19,7 +19,7 @@ namespace LilValidation.Core.Extensions
             errorDescription = errorDescription ?? string.Format(contract.Options.Messages.NotEmptyErrorMessage.Value, contract.MemberName);
 
             if (string.IsNullOrWhiteSpace(value))
-                contract.AddNotification(errorCode, errorDescription);
+                contract.AddError(errorCode, errorDescription);
 
             return new ValidationContract<T, string>(contract.MemberName, contract.MemberValue, contract.Errors);
         }
@@ -40,7 +40,7 @@ namespace LilValidation.Core.Extensions
             errorDescription = errorDescription ?? string.Format(contract.Options.Messages.MinLengthErrorMessage.Value, contract.MemberName, minLength);
 
             if (value.Length <= minLength)
-                contract.AddNotification(errorCode, errorDescription);
+                contract.AddError(errorCode, errorDescription);
 
             return new ValidationContract<T, string>(contract.MemberName, contract.MemberValue, contract.Errors);
         }
@@ -61,7 +61,7 @@ namespace LilValidation.Core.Extensions
             errorDescription = errorDescription ?? string.Format(contract.Options.Messages.MaxLengthErrorMessage.Value, contract.MemberName, maxLength);
 
             if (value.Length >= maxLength)
-                contract.AddNotification(errorCode, errorDescription);
+                contract.AddError(errorCode, errorDescription);
 
             return new ValidationContract<T, string>(contract.MemberName, contract.MemberValue, contract.Errors);
         }
@@ -82,7 +82,7 @@ namespace LilValidation.Core.Extensions
             errorDescription = errorDescription ?? string.Format(contract.Options.Messages.ExactlyLengthErrorMessage.Value, contract.MemberName, length);
 
             if (value.Length != length)
-                contract.AddNotification(errorCode, errorDescription);
+                contract.AddError(errorCode, errorDescription);
 
             return new ValidationContract<T, string>(contract.MemberName, contract.MemberValue, contract.Errors);
         }
@@ -105,7 +105,7 @@ namespace LilValidation.Core.Extensions
             Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
 
             if (!regex.IsMatch(contract.MemberValue))
-                contract.AddNotification(errorCode, errorDescription);
+                contract.AddError(errorCode, errorDescription);
 
             return new ValidationContract<T, string>(contract.MemberName, contract.MemberValue, contract.Errors);
         }
@@ -127,7 +127,7 @@ namespace LilValidation.Core.Extensions
             Regex regex = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", RegexOptions.IgnoreCase);
 
             if (!regex.IsMatch(contract.MemberValue))
-                contract.AddNotification(errorCode, errorDescription);
+                contract.AddError(errorCode, errorDescription);
 
             return new ValidationContract<T, string>(contract.MemberName, contract.MemberValue, contract.Errors);
         }
