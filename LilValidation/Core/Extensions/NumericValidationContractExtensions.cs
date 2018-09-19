@@ -41,7 +41,7 @@ namespace LilValidation.Core.Extensions
             errorCode = errorCode ?? string.Format(contract.Options.Messages.BetweenErrorMessage.Key, contract.MemberName, initial);
             errorDescription = errorDescription ?? string.Format(contract.Options.Messages.BetweenErrorMessage.Value, contract.MemberName, initial, final);
 
-            if (contract.MemberValue.CompareTo(initial) < 0 || contract.MemberValue.CompareTo(final) > 0)
+            if (contract.MemberValue.CompareTo(initial) <= 0 || contract.MemberValue.CompareTo(final) >= 0)
                 contract.AddError(errorCode, errorDescription);
 
             return new ValidationContract<T, TProperty>(contract.MemberName, contract.MemberValue, contract.Errors);

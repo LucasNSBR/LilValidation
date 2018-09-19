@@ -264,7 +264,7 @@ namespace LilValidation.Tests.Core
         #region MaxLength Validation 
         [TestMethod]
         [TestCategory("MaxLength Validation")]
-        public void MaxLengthLengthValidationShouldSuccess()
+        public void MaxLengthValidationShouldSuccess()
         {
             //Field length is 10
             person.Email = "0123456789";
