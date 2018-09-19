@@ -49,7 +49,7 @@ namespace LilValidation.Configuration
         {
             get
             {
-                return new KeyValuePair<string, string>("{0} muito grande", "A propriedade {0} não possui a quantidade especificada de caracteres ({1}).");
+                return new KeyValuePair<string, string>("{0} fora do especificado", "A propriedade {0} não possui a quantidade especificada de caracteres ({1}).");
             }
         }
 

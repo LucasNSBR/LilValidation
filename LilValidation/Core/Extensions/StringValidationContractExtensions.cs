@@ -121,8 +121,8 @@ namespace LilValidation.Core.Extensions
         public static ValidationContract<T, string> Email<T>(this ValidationContract<T, string> contract, string errorCode = null, string errorDescription = null)
         {
             string value = ConvertFromNull(contract.MemberValue);
-            errorCode = errorCode ?? string.Format(contract.Options.Messages.RegexErrorMessage.Key, contract.MemberName);
-            errorDescription = errorDescription ?? string.Format(contract.Options.Messages.RegexErrorMessage.Value, contract.MemberName);
+            errorCode = errorCode ?? string.Format(contract.Options.Messages.EmailErrorMessage.Key, contract.MemberName);
+            errorDescription = errorDescription ?? string.Format(contract.Options.Messages.EmailErrorMessage.Value, contract.MemberName);
 
             Regex regex = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", RegexOptions.IgnoreCase);
 
