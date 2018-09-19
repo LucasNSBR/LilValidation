@@ -8,12 +8,12 @@ using System.Linq;
 namespace LilValidation.Tests.Core
 {
     [TestClass]
-    public class CoreValidationContractExtensionsTests
+    public class ObjectValidationContractExtensionsTests
     {
         Person person = new Person();
         ValidationContract<Person, string> contract;
 
-        public CoreValidationContractExtensionsTests()
+        public ObjectValidationContractExtensionsTests()
         {
             contract = new ValidationContract<Person, string>(p => person.Name);
         }

@@ -1,6 +1,6 @@
 ﻿namespace LilValidation.Core.Extensions
 {
-    public static class CoreValidationContractExtensions
+    public static class ObjectValidationContractExtensions
     {
         /// <summary>
         /// Check if current object is null
