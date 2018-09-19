@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LilValidation.Core.Extensions
+﻿namespace LilValidation.Core.Extensions
 {
     public static class BoolValidationContractExtensions
     {

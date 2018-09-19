@@ -57,6 +57,7 @@ namespace LilValidation.Core
         public ValidationContract(Expression<Func<T, TProperty>> expression)
         {
             _errors = new List<ValidationError>();
+            Options = GetDefaultOptions();
 
             try
             {
