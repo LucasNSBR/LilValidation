@@ -52,5 +52,40 @@ namespace LilValidation.Configuration.Abstractions
         /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
         KeyValuePair<string, string> EmailErrorMessage { get; }
 
+        /// <summary>
+        /// Validation Message for Equals() extension method.
+        /// </summary>
+        /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
+        KeyValuePair<string, string> EqualsErrorMessage { get; }
+
+        /// <summary>
+        /// Validation Message for Between() extension method.
+        /// </summary>
+        /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
+        KeyValuePair<string, string> BetweenErrorMessage { get; }
+
+        /// <summary>
+        /// Validation Message for LessOrEqualThan() extension method.
+        /// </summary>
+        /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
+        KeyValuePair<string, string> LessOrEqualThanErrorMessage { get; }
+
+        /// <summary>
+        /// Validation Message for GreaterOrEqualThan() extension method.
+        /// </summary>
+        /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
+        KeyValuePair<string, string> GreaterOrEqualThanErrorMessage { get; }
+
+        /// <summary>
+        /// Validation Message for LessThan() extension method.
+        /// </summary>
+        /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
+        KeyValuePair<string, string> LessThanErrorMessage { get; }
+
+        /// <summary>
+        /// Validation Message for GreaterThan() extension method.
+        /// </summary>
+        /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
+        KeyValuePair<string, string> GreaterThanErrorMessage { get; }
     }
 }
