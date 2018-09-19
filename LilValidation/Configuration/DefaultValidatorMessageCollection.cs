@@ -116,5 +116,21 @@ namespace LilValidation.Configuration
                 return new KeyValuePair<string, string>("{0} é menor ou igual a {1}", "A propriedade {0} tem um valor menor ou igual ao especificado ({1}).");
             }
         }
+
+        public KeyValuePair<string, string> IsTrueErrorMessage
+        {
+            get
+            {
+                return new KeyValuePair<string, string>("{0} falso", "O valor de {0} deve verdadeiro.");
+            }
+        }
+
+        public KeyValuePair<string, string> IsFalseErrorMessage
+        {
+            get
+            {
+                return new KeyValuePair<string, string>("{0} verdadeiro", "O valor de {0} deve falso.");
+            }
+        }
     }
 }

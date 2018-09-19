@@ -87,5 +87,17 @@ namespace LilValidation.Configuration.Abstractions
         /// </summary>
         /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
         KeyValuePair<string, string> GreaterThanErrorMessage { get; }
+
+        /// <summary>
+        /// Validation Message for IsTrue() extension method.
+        /// </summary>
+        /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
+        KeyValuePair<string, string> IsFalseErrorMessage { get; }
+
+        /// <summary>
+        /// Validation Message for IsFalse() extension method.
+        /// </summary>
+        /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
+        KeyValuePair<string, string> IsTrueErrorMessage { get; }
     }
 }
