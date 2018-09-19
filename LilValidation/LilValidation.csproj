@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
+    <Authors>Lucas Pereira Campos</Authors>
+    <Description>Simple, unambitious, fluent, chain of responsability based validation library.  
+</Description>
+    <PackageTags>Validator, Validation, Fluent, Extension Method</PackageTags>
+    <PackageProjectUrl>https://github.com/LucasNSBR/LilValidation</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/LucasNSBR/LilValidation</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>
