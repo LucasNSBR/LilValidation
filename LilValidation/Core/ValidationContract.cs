@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace LilValidation.Core
 {
-    public class ValidationContract<T, TProperty>
+    public class ValidationContract<T, TProperty> 
     {
         /// <summary>
         /// Name of the property that are being validated.

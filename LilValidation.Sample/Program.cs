@@ -16,7 +16,7 @@ namespace LilValidation.Sample
             person.Name = Console.ReadLine();
             person.Age = Convert.ToInt32(Console.ReadLine()); 
             person.NetWorth = Convert.ToDecimal(Console.ReadLine());
-
+            
             //Generate lists of errors 
             IReadOnlyList<ValidationError> nameErrors = new ValidationContract<Person, string>(c => person.Name)
                 .NotNull()
