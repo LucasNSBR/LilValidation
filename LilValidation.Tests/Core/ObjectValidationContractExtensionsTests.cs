@@ -57,7 +57,6 @@ namespace LilValidation.Tests.Core
 
             Assert.IsTrue(success);
         }
-        #endregion
 
         [TestMethod]
         [TestCategory("NotNull Validation")]
@@ -71,6 +70,7 @@ namespace LilValidation.Tests.Core
             Assert.AreEqual("404", errors.First().ErrorCode);
             Assert.AreEqual("Null Value", errors.First().ErrorDescription);
         }
+        #endregion
 
         #region Null()
         [TestMethod]
@@ -82,7 +82,7 @@ namespace LilValidation.Tests.Core
             contract = new ValidationContract<Person, string>(p => person.Name);
 
             bool success = contract
-                .NotNull()
+                .Null()
                 .Success;
 
             Assert.IsFalse(success);
