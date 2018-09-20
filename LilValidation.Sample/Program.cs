@@ -17,18 +17,18 @@ namespace LilValidation.Sample
             person.NetWorth = Convert.ToDecimal(Console.ReadLine());
             
             //Generate lists of errors 
-            IReadOnlyList<ValidationError> nameErrors = new ValidationContract<Person, string>(c => person.Name)
+            IReadOnlyList<ValidationError> nameErrors = new ValidationContract<Person, string>(person, c => c.Name)
                 .NotNull()
                 .MinLength(5)
                 .MaxLength(10)
                 .Build();
 
-            IReadOnlyList<ValidationError> ageErrors = new ValidationContract<Person, int>(c => person.Age)
+            IReadOnlyList<ValidationError> ageErrors = new ValidationContract<Person, int>(person, c => c.Age)
                 .GreaterThan(10)
                 .LessThan(100)
                 .Build();
 
-            IReadOnlyList<ValidationError> netWorthErrors = new ValidationContract<Person, decimal>(p => person.NetWorth)
+            IReadOnlyList<ValidationError> netWorthErrors = new ValidationContract<Person, decimal>(person, p => person.NetWorth)
                 .GreaterThan(2500)
                 .Build();
 

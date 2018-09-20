@@ -1,4 +1,6 @@
-﻿namespace LilValidation.Sample.Models
+﻿using LilValidation.Core;
+
+namespace LilValidation.Sample.Models
 {
     public class Person
     {

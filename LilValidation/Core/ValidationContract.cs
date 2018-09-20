@@ -51,10 +51,12 @@ namespace LilValidation.Core
 
         /// <summary>
         /// Entry point for a validation contract.
+        /// CURRENT DRAWBACK: YOU NEED TO USE A INSTANCE OF THE TYPE
         /// </summary>
+        /// <param name="instance">A instance to specify where the validation should be applied</param>
         /// <param name="expression">A MemberExpression to get the property to be validated</param>
         /// <param name="options">A IValidationOptions object to configure validation parameters</param>
-        public ValidationContract(Expression<Func<T, TProperty>> expression)
+        public ValidationContract(T instance, Expression<Func<T, TProperty>> expression)
         {
             _errors = new List<ValidationError>();
             Options = GetDefaultOptions();
@@ -79,7 +81,7 @@ namespace LilValidation.Core
                 };
 
                 MemberName = member.Member.Name;
-                MemberValue = ExpressionEvaluator.CompileLocalMember<TProperty>(member);
+                MemberValue = ExpressionEvaluator.CompileLocalMember<T, TProperty>(member, instance);
             }
             catch (Exception e)
             {
