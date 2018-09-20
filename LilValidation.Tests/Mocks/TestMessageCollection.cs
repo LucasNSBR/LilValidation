@@ -38,5 +38,13 @@ namespace LilValidation.Tests.Mocks
         public KeyValuePair<string, string> IsFalseErrorMessage => throw new NotImplementedException();
 
         public KeyValuePair<string, string> IsTrueErrorMessage => throw new NotImplementedException();
+
+        public KeyValuePair<string, string> GuidEqualErrorMessage => throw new NotImplementedException();
+
+        public KeyValuePair<string, string> GuidNotEqualErrorMessage => throw new NotImplementedException();
+
+        public KeyValuePair<string, string> GuidNotEmptyErrorMessage => throw new NotImplementedException();
+
+        public KeyValuePair<string, string> GuidEmptyErrorMessage => throw new NotImplementedException();
     }
 }

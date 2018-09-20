@@ -132,5 +132,37 @@ namespace LilValidation.Configuration
                 return new KeyValuePair<string, string>("{0} verdadeiro", "O valor de {0} deve falso.");
             }
         }
+
+        public KeyValuePair<string, string> GuidEqualErrorMessage
+        {
+            get
+            {
+                return new KeyValuePair<string, string>("{0} deve ser igual a {1}", "O valor de {0} deve ser igual a {1} para a operação prosseguir.");
+            }
+        }
+
+        public KeyValuePair<string, string> GuidNotEqualErrorMessage
+        {
+            get
+            {
+                return new KeyValuePair<string, string>("{0} deve ser diferente de {1}", "O valor de {0} deve ser diferente de {1} para a operação prosseguir.");
+            }
+        }
+
+        public KeyValuePair<string, string> GuidNotEmptyErrorMessage
+        {
+            get
+            {
+                return new KeyValuePair<string, string>("{0} vazio", "O valor de {0} não pode estar vazio.");
+            }
+        }
+
+        public KeyValuePair<string, string> GuidEmptyErrorMessage
+        {
+            get
+            {
+                return new KeyValuePair<string, string>("{0} não-vazio", "O valor de {0} deve estar vazio para a operação prosseguir.");
+            }
+        }
     }
 }

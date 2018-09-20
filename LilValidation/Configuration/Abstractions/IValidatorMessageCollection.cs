@@ -89,15 +89,40 @@ namespace LilValidation.Configuration.Abstractions
         KeyValuePair<string, string> GreaterThanErrorMessage { get; }
 
         /// <summary>
-        /// Validation Message for IsTrue() extension method.
+        /// Validation Message for IsFalse() extension method.
         /// </summary>
         /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
         KeyValuePair<string, string> IsFalseErrorMessage { get; }
 
         /// <summary>
-        /// Validation Message for IsFalse() extension method.
+        /// Validation Message for IsTrue() extension method.
         /// </summary>
         /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
         KeyValuePair<string, string> IsTrueErrorMessage { get; }
+
+        /// <summary>
+        /// Validation Message for Guid IsEqual() extension method.
+        /// </summary>
+        /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
+        KeyValuePair<string, string> GuidEqualErrorMessage { get; }
+        
+        /// <summary>
+        /// Validation Message for Guid NotEqual() extension method.
+        /// </summary>
+        /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
+        KeyValuePair<string, string> GuidNotEqualErrorMessage { get; }
+
+        /// <summary>
+        /// Validation Message for Guid NotEmpty() extension method.
+        /// </summary>
+        /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
+        KeyValuePair<string, string> GuidNotEmptyErrorMessage { get; }
+
+        /// <summary>
+        /// Validation Message for Guid Empty() extension method.
+        /// </summary>
+        /// <returns>KeyValuePair with ErrorCode and ErrorMessage</returns>
+        KeyValuePair<string, string> GuidEmptyErrorMessage { get; }
+
     }
 }

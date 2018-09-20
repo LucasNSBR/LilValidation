@@ -28,7 +28,7 @@ namespace LilValidation.Sample
                 .LessThan(100)
                 .Build();
 
-            IReadOnlyList<ValidationError> netWorthErrors = new ValidationContract<Person, decimal>(person, p => person.NetWorth)
+            IReadOnlyList<ValidationError> netWorthErrors = new ValidationContract<Person, decimal>(person, p => p.NetWorth)
                 .GreaterThan(2500)
                 .Build();
 
