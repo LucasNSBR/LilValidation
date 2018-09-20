@@ -9,6 +9,7 @@
     <PackageProjectUrl>https://github.com/LucasNSBR/LilValidation</PackageProjectUrl>
     <RepositoryUrl>https://github.com/LucasNSBR/LilValidation</RepositoryUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
 </Project>
