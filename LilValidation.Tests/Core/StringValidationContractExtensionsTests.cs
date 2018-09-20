@@ -14,7 +14,7 @@ namespace LilValidation.Tests.Core
         public StringValidationContractExtensionsTests()
         {
             person.Name = "Lucas";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
         }
 
         #region Helpers
@@ -39,7 +39,7 @@ namespace LilValidation.Tests.Core
         public void EmailValidationShouldSuccess(string email)
         {
             person.Email = email;
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             bool success = contract.Email().Success;
             Assert.IsTrue(success);
@@ -55,7 +55,7 @@ namespace LilValidation.Tests.Core
         {
             //The validation should fail because all these emails are not valid
             person.Email = email;
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             bool success = contract.Email().Success;
 
@@ -70,7 +70,7 @@ namespace LilValidation.Tests.Core
             //Email is invalid
             person.Email = "fabrikam......admin@gmail.com";
 
-            ValidationError error = new ValidationContract<Person, string>(p => person.Email)
+            ValidationError error = new ValidationContract<Person, string>(person, p => p.Email)
                 .Email()
                 .Build()
                 .First();
@@ -85,7 +85,7 @@ namespace LilValidation.Tests.Core
             //Email is invalid
             person.Email = "fabrikam......admin@gmail.com";
 
-            ValidationError error = new ValidationContract<Person, string>(p => person.Email)
+            ValidationError error = new ValidationContract<Person, string>(person, p => p.Email)
                 .Email("Inválido", "E-mail inválido")
                 .Build()
                 .First();
@@ -105,7 +105,7 @@ namespace LilValidation.Tests.Core
         {
             person.Email = test;
             string pattern = "[dfny]abrikam";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             bool success = contract.Regex(pattern).Success;
             Assert.IsTrue(success);
@@ -122,7 +122,7 @@ namespace LilValidation.Tests.Core
             //The validation should fail because all these regex are not valid
             person.Email = test;
             string pattern = "yabrikam";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             bool success = contract.Regex(pattern).Success;
             //Success is false
@@ -136,7 +136,7 @@ namespace LilValidation.Tests.Core
             //Regex (test field) is invalid
             person.Email = "fabrikam";
 
-            ValidationError error = new ValidationContract<Person, string>(p => person.Email)
+            ValidationError error = new ValidationContract<Person, string>(person, p => p.Email)
                 .Regex("nabrikam")
                 .Build()
                 .First();
@@ -151,7 +151,7 @@ namespace LilValidation.Tests.Core
             //Regex (test field) is invalid
             person.Email = "fabrikam";
 
-            ValidationError error = new ValidationContract<Person, string>(p => person.Email)
+            ValidationError error = new ValidationContract<Person, string>(person, p => p.Email)
                 .Regex("nabrikam", "Inválido", "Regex inválido")
                 .Build()
                 .First();
@@ -167,7 +167,7 @@ namespace LilValidation.Tests.Core
         {
             //Field is not empty, validation will pass
             person.Email = "emaildeexemplo";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             bool success = contract.NotEmpty().Success;
             Assert.IsTrue(success);
@@ -179,7 +179,7 @@ namespace LilValidation.Tests.Core
         {
             //Field is empty, validation will fail
             person.Email = "";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             bool success = contract.NotEmpty().Success;
             Assert.IsFalse(success);
@@ -191,7 +191,7 @@ namespace LilValidation.Tests.Core
         {
             //Field is empty, validation will fail
             person.Email = "";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             string errorDescription = contract.NotEmpty().Build().First().ErrorDescription;
             Assert.AreEqual($"A operação não pode prosseguir se o valor de {contract.MemberName} estiver vazio.", errorDescription);
@@ -203,7 +203,7 @@ namespace LilValidation.Tests.Core
         {
             //Field is empty, validation will fail
             person.Email = "";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             string errorDescription = contract.NotEmpty("ErrorCode", "Empty").Build().First().ErrorDescription;
             Assert.AreEqual($"Empty", errorDescription);
@@ -217,7 +217,7 @@ namespace LilValidation.Tests.Core
         {
             //Field length is 10
             person.Email = "0123456789";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             bool success = contract.ExactlyLength(10).Success;
             Assert.IsTrue(success);
@@ -229,7 +229,7 @@ namespace LilValidation.Tests.Core
         {
             //Field don't have specified length, validation will fail
             person.Email = "1234";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             bool success = contract.ExactlyLength(10).Success;
             Assert.IsFalse(success);
@@ -241,7 +241,7 @@ namespace LilValidation.Tests.Core
         {
             //Field don't have specified length, validation will fail
             person.Email = "12345";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             string errorCode = contract.ExactlyLength(10).Build().First().ErrorCode;
             Assert.AreEqual($"{contract.MemberName} fora do especificado", errorCode);
@@ -253,7 +253,7 @@ namespace LilValidation.Tests.Core
         {
             //Field don't have specified length, validation will fail
             person.Email = "";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             string errorDescription = contract.ExactlyLength(10, "ErrorCode", "OutOfRange").Build().First().ErrorDescription;
             Assert.AreEqual($"OutOfRange", errorDescription);
@@ -267,7 +267,7 @@ namespace LilValidation.Tests.Core
         {
             //Field length is 10
             person.Email = "0123456789";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             bool success = contract.MaxLength(15).Success;
             Assert.IsTrue(success);
@@ -279,7 +279,7 @@ namespace LilValidation.Tests.Core
         {
             //Field don't have specified length, validation will fail
             person.Email = "1234";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             bool success = contract.MaxLength(2).Success;
             Assert.IsFalse(success);
@@ -291,7 +291,7 @@ namespace LilValidation.Tests.Core
         {
             //Field don't have specified length, validation will fail
             person.Email = "12345";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             string errorCode = contract.MaxLength(3).Build().First().ErrorCode;
             Assert.AreEqual($"{contract.MemberName} muito grande", errorCode);
@@ -303,7 +303,7 @@ namespace LilValidation.Tests.Core
         {
             //Field don't have specified length, validation will fail
             person.Email = "12345";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             string errorDescription = contract.MaxLength(2, "ErrorCode", "OutOfRange").Build().First().ErrorDescription;
             Assert.AreEqual($"OutOfRange", errorDescription);
@@ -317,7 +317,7 @@ namespace LilValidation.Tests.Core
         {
             //Field length is 10
             person.Email = "0123456789";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             bool success = contract.MinLength(1).Success;
             Assert.IsTrue(success);
@@ -329,7 +329,7 @@ namespace LilValidation.Tests.Core
         {
             //Field don't have specified length, validation will fail
             person.Email = "1234";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             bool success = contract.MinLength(23).Success;
             Assert.IsFalse(success);
@@ -341,7 +341,7 @@ namespace LilValidation.Tests.Core
         {
             //Field don't have specified length, validation will fail
             person.Email = "12345";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             string errorCode = contract.MinLength(8).Build().First().ErrorCode;
             Assert.AreEqual($"{contract.MemberName} muito pequeno", errorCode);
@@ -353,7 +353,7 @@ namespace LilValidation.Tests.Core
         {
             //Field don't have specified length, validation will fail
             person.Email = "12345";
-            contract = new ValidationContract<Person, string>(p => person.Email);
+            contract = new ValidationContract<Person, string>(person, p => p.Email);
 
             string errorDescription = contract.MinLength(20, "ErrorCode", "OutOfRange").Build().First().ErrorDescription;
             Assert.AreEqual($"OutOfRange", errorDescription);

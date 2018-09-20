@@ -14,7 +14,7 @@ namespace LilValidation.Tests.Core
 
         public ObjectValidationContractExtensionsTests()
         {
-            contract = new ValidationContract<Person, string>(p => person.Name);
+            contract = new ValidationContract<Person, string>(person, p => p.Name);
         }
 
         #region NotNull()
@@ -48,7 +48,7 @@ namespace LilValidation.Tests.Core
         {
             //contract value now it's not null, validation will success
             person.Name = "Fabrikam";
-            contract = new ValidationContract<Person, string>(p => person.Name);
+            contract = new ValidationContract<Person, string>(person, p => p.Name);
 
             bool success = contract
                 .NotNull()
@@ -78,7 +78,7 @@ namespace LilValidation.Tests.Core
         {
             //contract value is NOT null, validation will fail
             person.Name = "Fabrikam";
-            contract = new ValidationContract<Person, string>(p => person.Name);
+            contract = new ValidationContract<Person, string>(person, p => p.Name);
 
             bool success = contract
                 .Null()
@@ -93,7 +93,7 @@ namespace LilValidation.Tests.Core
         {            
             //contract value is NOT null, validation will fail and add a notification
             person.Name = "Fabrikam";
-            contract = new ValidationContract<Person, string>(p => person.Name);
+            contract = new ValidationContract<Person, string>(person, p => p.Name);
 
             IReadOnlyList<ValidationError> errors = contract
                 .Null()
@@ -120,7 +120,7 @@ namespace LilValidation.Tests.Core
         {
             //contract value is NOT null, validation will fail and add a CUSTOMIZED notification
             person.Name = "Fabrikam";
-            contract = new ValidationContract<Person, string>(p => person.Name);
+            contract = new ValidationContract<Person, string>(person, p => p.Name);
 
             IReadOnlyList<ValidationError> errors = contract
                 .Null("500", "Not Null Value")

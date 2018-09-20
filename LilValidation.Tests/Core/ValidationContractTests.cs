@@ -15,7 +15,7 @@ namespace LilValidation.Tests.Core
 
         public ValidationContractTests()
         {
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
         }
 
         [TestMethod]
@@ -30,7 +30,7 @@ namespace LilValidation.Tests.Core
         [TestMethod]
         public void ValidationContractConstructorShouldInitializeDefaultValidatorOptions()
         {
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             Assert.IsNotNull(contract.Options);
             Assert.IsNotNull(contract.Options.Messages);
@@ -79,7 +79,7 @@ namespace LilValidation.Tests.Core
         [TestMethod]
         public void ValidationContractShouldChangeValidatorOptions()
         {
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
             contract.AddValidatorOptions(new TestValidatorOptions());
 
             Assert.IsNotNull(contract.Options);

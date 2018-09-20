@@ -14,7 +14,7 @@ namespace LilValidation.Tests.Core
         public NumericValidationContractExtensionsTests()
         {
             person.Name = "Lucas";
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
         }
 
         #region LessThan
@@ -23,7 +23,7 @@ namespace LilValidation.Tests.Core
         public void LessThanValidationShouldSuccess()
         {
             //person age is currently 0
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             bool success = contract.LessThan(15).Success;
             Assert.IsTrue(success);
@@ -35,7 +35,7 @@ namespace LilValidation.Tests.Core
         {
             //Age is greather than or equal 20 (limit), validation will fail
             person.Age = 20;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             bool success = contract.LessThan(20).Success;
             Assert.IsFalse(success);
@@ -47,7 +47,7 @@ namespace LilValidation.Tests.Core
         {
             //Age is greather than or equal 20 (limit), validation will fail
             person.Age = 20;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             int limit = 20;
 
@@ -61,7 +61,7 @@ namespace LilValidation.Tests.Core
         {
             //Age is greather than or equal 20 (limit), validation will fail
             person.Age = 20;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
             
             string errorDescription = contract.LessThan(20, "ErrorCode", "OutOfRange").Build().First().ErrorDescription;
             Assert.AreEqual($"OutOfRange", errorDescription);
@@ -75,7 +75,7 @@ namespace LilValidation.Tests.Core
         {
             //person age is currently 25
             person.Age = 31;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             bool success = contract.GreaterThan(15).Success;
             Assert.IsTrue(success);
@@ -87,7 +87,7 @@ namespace LilValidation.Tests.Core
         {
             //Age is less than or equal 20 (limit), validation will fail
             person.Age = 20;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             bool success = contract.GreaterThan(20).Success;
             Assert.IsFalse(success);
@@ -99,7 +99,7 @@ namespace LilValidation.Tests.Core
         {
             //Age is less than or equal 20 (limit), validation will fail
             person.Age = 20;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             int limit = 20;
 
@@ -113,7 +113,7 @@ namespace LilValidation.Tests.Core
         {
             //Age is less than or equal 20 (limit), validation will fail
             person.Age = 20;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             string errorDescription = contract.GreaterThan(20, "ErrorCode", "OutOfRange").Build().First().ErrorDescription;
             Assert.AreEqual($"OutOfRange", errorDescription);
@@ -127,7 +127,7 @@ namespace LilValidation.Tests.Core
         {
             //person age is currently 20
             person.Age = 20;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             //Generic types need to be specified because default of the default Equals() method
             bool success = contract.Equals<Person, int>(20).Success;
@@ -140,7 +140,7 @@ namespace LilValidation.Tests.Core
         {
             //person age is currently 20
             person.Age = 20;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             //Generic types need to be specified because default of the default Equals() method
             bool success = contract.Equals<Person, int>(21).Success;
@@ -162,7 +162,7 @@ namespace LilValidation.Tests.Core
             int final = 90;
 
             person.Age = age;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             bool success = contract.Between(initial, final).Success;
             Assert.IsTrue(success);
@@ -174,7 +174,7 @@ namespace LilValidation.Tests.Core
         {
             //person age is currently 20
             person.Age = 20;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             //Generic types need to be specified because default of the default Equals() method
             bool success = contract.Equals<Person, int>(21).Success;
@@ -188,7 +188,7 @@ namespace LilValidation.Tests.Core
         public void LessOrEqualThanValidationShouldSuccess()
         {
             //person age is currently 0
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             bool success = contract.LessOrEqualThan(15).Success;
             Assert.IsTrue(success);
@@ -200,7 +200,7 @@ namespace LilValidation.Tests.Core
         {
             //Age is greather than, validation will fail
             person.Age = 21;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             bool success = contract.LessOrEqualThan(20).Success;
             Assert.IsFalse(success);
@@ -212,7 +212,7 @@ namespace LilValidation.Tests.Core
         {
             //Age is greather than, validation will fail
             person.Age = 21;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             int limit = 20;
 
@@ -226,7 +226,7 @@ namespace LilValidation.Tests.Core
         {
             //Age is greather than, validation will fail
             person.Age = 20;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             string errorDescription = contract.LessOrEqualThan(19, "ErrorCode", "OutOfRange").Build().First().ErrorDescription;
             Assert.AreEqual($"OutOfRange", errorDescription);
@@ -240,7 +240,7 @@ namespace LilValidation.Tests.Core
         {
             //person age is currently 25
             person.Age = 31;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             bool success = contract.GreaterOrEqualThan(15).Success;
             Assert.IsTrue(success);
@@ -252,7 +252,7 @@ namespace LilValidation.Tests.Core
         {
             //Age is less than, validation will fail
             person.Age = 19;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             bool success = contract.GreaterOrEqualThan(20).Success;
             Assert.IsFalse(success);
@@ -264,7 +264,7 @@ namespace LilValidation.Tests.Core
         {
             //Age is less than, validation will fail
             person.Age = 20;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             int limit = 21;
 
@@ -278,7 +278,7 @@ namespace LilValidation.Tests.Core
         {
             //Age is less than, validation will fail
             person.Age = 20;
-            contract = new ValidationContract<Person, int>(p => person.Age);
+            contract = new ValidationContract<Person, int>(person, p => p.Age);
 
             string errorDescription = contract.GreaterOrEqualThan(21, "ErrorCode", "OutOfRange").Build().First().ErrorDescription;
             Assert.AreEqual($"OutOfRange", errorDescription);

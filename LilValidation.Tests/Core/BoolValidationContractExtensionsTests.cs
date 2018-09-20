@@ -14,7 +14,7 @@ namespace LilValidation.Tests.Core
 
         public BoolValidationContractExtensionsTests()
         {
-            contract = new ValidationContract<Person, bool>(p => person.Active);
+            contract = new ValidationContract<Person, bool>(person, p => p.Active);
         }
 
         #region IsTrue
@@ -48,7 +48,7 @@ namespace LilValidation.Tests.Core
         {
             //contract value now true, validation will success
             person.Active = true;
-            contract = new ValidationContract<Person, bool>(p => person.Active);
+            contract = new ValidationContract<Person, bool>(person, p => p.Active);
 
             bool success = contract
                 .IsTrue()
@@ -78,7 +78,7 @@ namespace LilValidation.Tests.Core
         {
             //Person.Active is true
             person.Active = true;
-            contract = new ValidationContract<Person, bool>(p => person.Active);
+            contract = new ValidationContract<Person, bool>(person, p => p.Active);
 
             bool success = contract
                 .IsFalse()
@@ -93,7 +93,7 @@ namespace LilValidation.Tests.Core
         {
             //contract value is true, validation will fail and add a notification
             person.Active = true;
-            contract = new ValidationContract<Person, bool>(p => person.Active);
+            contract = new ValidationContract<Person, bool>(person, p => p.Active);
 
             IReadOnlyList<ValidationError> errors = contract
                 .IsFalse()
@@ -120,7 +120,7 @@ namespace LilValidation.Tests.Core
         {
             //contract value is true, validation will fail and add a CUSTOMIZED notification
             person.Active = true;
-            contract = new ValidationContract<Person, bool>(p => person.Active);
+            contract = new ValidationContract<Person, bool>(person, p => p.Active);
 
             IReadOnlyList<ValidationError> errors = contract
                 .IsFalse("True", "True Value")
